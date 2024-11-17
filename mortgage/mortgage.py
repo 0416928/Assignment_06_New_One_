@@ -122,3 +122,27 @@ class Mortgage:
             self.__string_frequency_value = PaymentFrequency[frequency]
         except:
            raise ValueError("Frequency provided is invalid.") 
+    
+    # ACCESSORS
+    @property
+    def amortization(self) -> int:
+        """
+        Accessor for amortization attribute.
+        """    
+        return self.__amortization
+    
+    # MUTATORS
+    @amortization.setter
+    def amortization(self,value:int):
+        """    
+        Sets the value
+        Args:
+            value (int): value provided by user for their loan.
+        Raises:
+            ValueError: When the value provided is 
+            not a valid in enum.
+        """
+        if value in VALID_AMORTIZATION:
+            self.__amortization = value
+        else:
+            raise ValueError("Amortization provided is invalid.") 
