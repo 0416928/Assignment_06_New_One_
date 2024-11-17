@@ -117,3 +117,24 @@ class MortgageTests(TestCase):
         with self.assertRaises(ValueError) as context:
             rate.string_rate_value = "INVALID_RATE"
         self.assertEqual(expected, str(context.exception))
+    
+    def test_string_frequency_value_correct(self):
+        # arrange
+        frequency = Mortgage(10000, "FIXED_3", "MONTHLY", 10)
+        # act
+        frequency.string_frequency_value = "MONTHLY"
+        expected = "MONTHLY"
+        actual_frequency = str(frequency.string_frequency_value).split(".")[-1]
+        # assert
+        self.assertEqual(expected, actual_frequency)
+
+
+
+    def test_string_frequency_value_incorrect(self):
+        # Arrange
+        frequency = Mortgage(10000, "FIXED_3", "MONTHLY", 10)
+        expected = "Frequency provided is invalid."
+        # Act and Assert
+        with self.assertRaises(ValueError) as context:
+            frequency.string_frequency_value = "INVALID_FREQUENCY"
+        self.assertEqual(expected, str(context.exception))
