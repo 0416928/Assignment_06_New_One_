@@ -146,3 +146,28 @@ class Mortgage:
             self.__amortization = value
         else:
             raise ValueError("Amortization provided is invalid.") 
+        
+    def calculate_payment(self) -> float:
+        """
+        This function is calculated the payment  with respect to Loan Amount, 
+        Interest Rate, Frequency and Amortization.
+        Retuns:
+            float: the actual payment in decimals.
+        """
+        
+        payment = Mortgage(682912.43, "FIXED_1", "MONTHLY", 10)
+
+        rate = self.__string_rate_value.value
+
+        frequency = self.__string_frequency_value.value
+        i = rate / frequency
+        n = self.amortization * frequency
+    
+        formula =  (i * (1+i)**n)/(((1+i)**n)-1)
+
+        calculated_payment = self.loan_amount * formula
+        calculated_payment  = f"{calculated_payment:.2f}"
+        calculated_payment = float(calculated_payment)
+
+
+        return calculated_payment

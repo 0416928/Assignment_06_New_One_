@@ -102,7 +102,6 @@ class MortgageTests(TestCase):
         rate = Mortgage(10000, "FIXED_3", "MONTHLY", 10)
         expected = "FIXED_3"
         actual_rate = str(rate.string_rate_value).split(".")[-1]
-        print(actual_rate)
 
         # Act and Assert
         self.assertEqual(expected, actual_rate)
@@ -157,3 +156,22 @@ class MortgageTests(TestCase):
             amortization.amortization = 100
         self.assertEqual(expected, str(context.exception))
           
+    def test_calculate_payment_valid(self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_1", "MONTHLY", 10)
+        # Act
+        expected = 7578.30
+        # Assert
+        actual = payment.calculate_payment()
+        self.assertEqual(actual,expected)
+
+
+
+    def test_calculate_payment_decimal_places (self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_1", "MONTHLY", 10)
+        # Act
+        expected = 7578.30
+        actual = payment.calculate_payment()
+        # Assert
+        self.assertAlmostEqual(actual,expected)
