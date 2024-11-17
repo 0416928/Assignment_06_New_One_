@@ -154,7 +154,7 @@ class Mortgage:
         Retuns:
             float: the actual payment in decimals.
         """
-        
+
         payment = Mortgage(682912.43, "FIXED_1", "MONTHLY", 10)
 
         rate = self.__string_rate_value.value
@@ -169,5 +169,19 @@ class Mortgage:
         calculated_payment  = f"{calculated_payment:.2f}"
         calculated_payment = float(calculated_payment)
 
-
         return calculated_payment
+    
+    def __str__(self):
+        """
+        This function prints as a String representation.
+        Returns:
+              str: Returns a string representation of the class.
+              format and example: Mortgage Amount: $682,912.43
+                      Rate: 5.89%
+                      Amortization: 30
+                      Frequency: Monthly -- Calculated Payment: $4,046.23
+        """
+        return (f"Mortgage Amount: ${self.__loan_amount:,.2f}"
+        + f"\nRate: {self.__string_rate_value.value * 100}%"
+        + f"\nAmortization: {self.__amortization}"
+        + f"\nFrequency: {str(self.__string_frequency_value).split(".")[-1]} -- Calculated Payment: ${self.calculate_payment():,.2f}")

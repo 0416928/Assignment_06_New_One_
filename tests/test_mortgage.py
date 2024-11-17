@@ -175,3 +175,31 @@ class MortgageTests(TestCase):
         actual = payment.calculate_payment()
         # Assert
         self.assertAlmostEqual(actual,expected)
+
+    def test_str_method_monthly(self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_3", "MONTHLY", 30)
+        expected = "Mortgage Amount: $682,912.43\nRate: 5.89%\nAmortization: 30\nFrequency: MONTHLY -- Calculated Payment: $4,046.23"
+        # Act
+        actual = payment.__str__()
+        # Assert
+        self.assertEqual(expected, actual)
+
+
+    def test_str_method_biweekly(self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_3", "BI_WEEKLY", 30)      
+        expected = "Mortgage Amount: $682,912.43\nRate: 5.89%\nAmortization: 30\nFrequency: BI_WEEKLY -- Calculated Payment: $1,866.60"
+        # Act
+        actual = payment.__str__()
+        # Assert
+        self.assertEqual(expected, actual)
+
+    def test_str_method_weekly(self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_3", "WEEKLY", 30)      
+        expected = "Mortgage Amount: $682,912.43\nRate: 5.89%\nAmortization: 30\nFrequency: WEEKLY -- Calculated Payment: $933.11"
+        # Act
+        actual = payment.__str__()
+        # Assert
+        self.assertEqual(expected, actual)
