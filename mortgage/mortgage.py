@@ -185,3 +185,18 @@ class Mortgage:
         + f"\nRate: {self.__string_rate_value.value * 100}%"
         + f"\nAmortization: {self.__amortization}"
         + f"\nFrequency: {str(self.__string_frequency_value).split(".")[-1]} -- Calculated Payment: ${self.calculate_payment():,.2f}")
+    
+
+    def __repr__(self):
+        """
+            
+        Provides a representation of an Mortgage object.
+        Returns:
+            str: A representation of a loan amount.
+                format: Mortgage({loan-amount}, {interest-rate}, {frequency}, {amortization})
+                example: Mortgage(682912.43, 0.0599, 12, 30)
+        """
+        return   (f"Mortgage({self.__loan_amount:.2f}, "
+                  + f"{self.__string_rate_value.value}, "
+                  + f"{self.__string_frequency_value.value}, "
+                  + f"{self.__amortization})")

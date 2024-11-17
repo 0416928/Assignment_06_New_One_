@@ -203,3 +203,12 @@ class MortgageTests(TestCase):
         actual = payment.__str__()
         # Assert
         self.assertEqual(expected, actual)
+
+    def test_repr_string_representation(self):
+        # Arrange
+        payment = Mortgage(682912.43, "FIXED_1", "MONTHLY", 30)
+        expected = "Mortgage(682912.43, 0.0599, 12, 30)"
+        # Act
+        actual = payment.__repr__()
+        # Assert
+        self.assertEqual(expected, actual)
