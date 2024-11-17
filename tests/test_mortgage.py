@@ -96,3 +96,24 @@ class MortgageTests(TestCase):
 
       # Act and Assert
         self.assertEqual(expected,loan.loan_amount)
+
+    def test_string_rate_value_correct_value(self):
+        # Arrange
+        rate = Mortgage(10000, "FIXED_3", "MONTHLY", 10)
+        expected = "FIXED_3"
+        actual_rate = str(rate.string_rate_value).split(".")[-1]
+        print(actual_rate)
+
+        # Act and Assert
+        self.assertEqual(expected, actual_rate)
+
+
+    def test_string_rate_value_incorrect_value(self):
+        # Arrange
+        rate = Mortgage(10000, "FIXED_3", "MONTHLY", 10)
+        expected = "Rate provided is invalid."
+
+        # Act and Assert
+        with self.assertRaises(ValueError) as context:
+            rate.string_rate_value = "INVALID_RATE"
+        self.assertEqual(expected, str(context.exception))

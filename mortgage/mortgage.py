@@ -65,7 +65,7 @@ class Mortgage:
         """    
         Sets the value for loan amount.
         Args:
-            value (sloat): The amount of the loan..
+            value (float): The amount of the loan..
         Raises:
             ValueError: When the value provided is 
             not a valid in loan amount.
@@ -74,3 +74,27 @@ class Mortgage:
             raise ValueError("Loan Amount must be positive.")
         else:
             self.__loan_amount = value
+
+    ## ACCESSOR
+    @property
+    def string_rate_value(self) -> str:
+        """
+        Accessor for rate attribute.
+        """
+        return self.__string_rate_value
+
+    ## MUTATORS
+    @string_rate_value.setter
+    def string_rate_value(self, string_value:str):
+        """    
+        Sets the string_value for rate.
+        Args:
+            string_value (str):The annual interest rate string equivalent to enum value.
+        Raises:
+            ValueError: When the rate provided is 
+            not a valid in enum.
+        """
+        try:
+            self.__string_rate_value = MortgageRate[string_value]
+        except:
+            raise ValueError("Rate provided is invalid.")
