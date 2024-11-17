@@ -14,6 +14,7 @@ from enum import Enum
 
 VALID_AMORTIZATION = {5, 10, 15, 20, 25, 30}# SET
 
+# CLASS
 class MortgageRate(Enum):
     """
     An enumeration to store the mortgage rate values.
@@ -33,6 +34,7 @@ class MortgageRate(Enum):
     VARIABLE_3 = 0.0669
     VARIABLE_1 = 0.0679
 
+# CLASS
 class PaymentFrequency(Enum):
     """
     An enumeration to store the payment frequency options.

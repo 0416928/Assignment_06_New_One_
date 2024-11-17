@@ -9,9 +9,13 @@ from unittest import TestCase
 from mortgage.mortgage import Mortgage
 from mortgage.pixell_lookup import MortgageRate, PaymentFrequency
 
+# CLASS
 class MortgageTests(TestCase):
     ## Tests needed:
     ## _init test_
+    ## __str__
+    ## __rpr__
+    ## __calculate_payment
 
     def test_init_invalid_amount_input (self):
          # Arrange 
